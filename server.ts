@@ -10,7 +10,6 @@ import { oakCors } from "https://deno.land/x/cors@v1.2.2/mod.ts";
 const PORT = 8080;
 const BASE_URL = Deno.env.get("URL") ?? `http://localhost:${PORT}`;
 const kv = await Deno.openKv();
-const router = new Router();
 
 const app = new Application();
 app.use(
@@ -19,6 +18,7 @@ app.use(
 	}),
 );
 
+const router = new Router();
 router.get("/", (ctx) => {
 	ctx.response.body = "Hello World!";
 });
