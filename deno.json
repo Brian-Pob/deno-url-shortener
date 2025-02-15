@@ -1,21 +1,33 @@
 {
-	"tasks": {
-		"dev:api": "deno run --watch -A --unstable-kv server.ts",
-		"dev:vite": "deno run -A --node-modules-dir npm:vite",
-		"build": "deno run -A --node-modules-dir npm:vite build",
-		"preview": "deno run -A --node-modules-dir npm:vite preview",
-		"serve": "deno run --allow-net --allow-read jsr:@std/http@1/file-server dist/"
-	},
-	"compilerOptions": {
-		"lib": ["ES2020", "DOM", "DOM.Iterable"]
-	},
-	"imports": {
-		"@deno/vite-plugin": "npm:@deno/vite-plugin@^1.0.4",
-		"@oak/oak": "jsr:@oak/oak@^17.1.4",
-		"@std/assert": "jsr:@std/assert@1",
-		"nanoid": "npm:nanoid@^5.1.0",
-		"sass": "npm:sass@^1.85.0",
-		"sass-embedded": "npm:sass-embedded@^1.85.0",
-		"vite": "npm:vite@^6.1.0"
-	}
+  "tasks": {
+    "dev:api": "deno run --watch -A --unstable-kv server.ts",
+    "dev:vite": "deno run -A --node-modules-dir npm:vite",
+    "build": "deno run -A --node-modules-dir npm:vite build",
+    "preview": "deno run -A --node-modules-dir npm:vite preview",
+    "serve": "deno run --allow-net --allow-read jsr:@std/http@1/file-server dist/"
+  },
+  "compilerOptions": {
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ]
+  },
+  "imports": {
+    "@deno/vite-plugin": "npm:@deno/vite-plugin@^1.0.4",
+    "@oak/oak": "jsr:@oak/oak@^17.1.4",
+    "@std/assert": "jsr:@std/assert@1",
+    "nanoid": "npm:nanoid@^5.1.0",
+    "sass": "npm:sass@^1.85.0",
+    "sass-embedded": "npm:sass-embedded@^1.85.0",
+    "vite": "npm:vite@^6.1.0"
+  },
+  "deploy": {
+    "project": "81611f26-abdb-4963-aea1-147238240058",
+    "exclude": [
+      "**/node_modules"
+    ],
+    "include": [],
+    "entrypoint": "jsr:@std/http/file-server"
+  }
 }
