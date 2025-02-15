@@ -7,7 +7,7 @@ import { route } from "jsr:@oak/oak/serve";
 import { nanoid } from "npm:nanoid";
 
 const PORT = 8080;
-const BASE_URL = `http://localhost:${PORT}`;
+const BASE_URL = Deno.env.get("URL") ?? `http://localhost:${PORT}`;
 const kv = await Deno.openKv();
 
 const router = new Router();
