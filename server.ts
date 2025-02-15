@@ -5,12 +5,19 @@ import { Application } from "jsr:@oak/oak/application";
 import { Router } from "jsr:@oak/oak/router";
 import { route } from "jsr:@oak/oak/serve";
 import { nanoid } from "npm:nanoid";
-import { oakCors } from "https://deno.land/x/cors/mod.ts";
+import { oakCors } from "https://deno.land/x/cors@v1.2.2/mod.ts";
 
 const PORT = 8080;
 const BASE_URL = Deno.env.get("URL") ?? `http://localhost:${PORT}`;
 const kv = await Deno.openKv();
 const router = new Router();
+
+const app = new Application();
+app.use(
+	oakCors({
+		origin: "https://url-shortener-ui.deno.dev",
+	}),
+);
 
 router.get("/", (ctx) => {
 	ctx.response.body = "Hello World!";
@@ -28,9 +35,7 @@ router.get("/:id", async (ctx) => {
 
 router.get(
 	"/shorten/:url",
-	oakCors({
-		origin: "https://url-shortener-ui.deno.dev",
-	}),
+
 	route((req, ctx) => {
 		// Assume :url is an encoded url
 		const decodedUrl = decodeURIComponent(ctx.params.url);
@@ -48,7 +53,6 @@ router.all("/404", (ctx) => {
 	ctx.response.body = "Not found";
 });
 
-const app = new Application();
 app.use(router.routes());
 app.use(router.allowedMethods());
 
