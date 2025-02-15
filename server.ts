@@ -15,6 +15,8 @@ const app = new Application();
 app.use(
 	oakCors({
 		origin: "https://url-shortener-ui.deno.dev",
+		optionsSuccessStatus: 200,
+		methods: "GET, POST, OPTIONS",
 	}),
 );
 
