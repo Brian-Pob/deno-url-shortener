@@ -34,7 +34,7 @@ jobs:
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "url-shortener-ui"
+          project: "url-shortener-deno-api"
           entrypoint: "server.ts"
           root: ""
           
