@@ -29,7 +29,7 @@ router.get("/:id", async (ctx) => {
 router.get(
 	"/shorten/:url",
 	oakCors({
-		origin: "https://url-shortener-deno-ui.deno.dev",
+		origin: "https://url-shortener-ui.deno.dev",
 	}),
 	route((req, ctx) => {
 		// Assume :url is an encoded url
