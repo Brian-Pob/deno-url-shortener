@@ -32,7 +32,7 @@ app.get("/:id", async (c) => {
 app.get("/shorten/:url", async (c) => {
 	const encodedUrl = c.req.param("url");
 	const decodedUrl = decodeURIComponent(encodedUrl);
-	const id = nanoid();
+	const id = nanoid(8);
 	await kv.set([id], decodedUrl);
 
 	console.log(`Shortening ${decodedUrl} to ${BASE_URL}/${id}`);
