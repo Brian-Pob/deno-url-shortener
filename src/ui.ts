@@ -25,7 +25,7 @@ function handleFormSubmit() {
 	urlInput.value = "";
 	console.log(encodeURIComponent(url));
 	const response = fetch(
-		`https://url-shortener-deno-api.deno.dev/shorten/${encodeURIComponent(url)}`,
+		`https://denoshort.deno.dev/shorten/${encodeURIComponent(url)}`,
 	);
 	response.then(async (response) => {
 		const json = await response.json();
