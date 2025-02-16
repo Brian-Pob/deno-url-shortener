@@ -10,6 +10,13 @@ document.addEventListener("DOMContentLoaded", () => {
 		event.preventDefault();
 		handleFormSubmit();
 	});
+
+	const copyButton = document.querySelector(".copy-button");
+	if (!copyButton) {
+		console.error("Could not find copy button element");
+		return;
+	}
+	copyButton.addEventListener("click", copyToClipboard);
 });
 
 function handleFormSubmit() {
@@ -22,7 +29,7 @@ function handleFormSubmit() {
 	);
 	response.then(async (response) => {
 		const json = await response.json();
-		const text = json.url;
+		const text: string = json.url;
 		console.log(text);
 		const shortenedUrl = document.querySelector(
 			".shortened-url-field",
@@ -31,6 +38,22 @@ function handleFormSubmit() {
 			console.error("Could not find shortened-url element");
 			return;
 		}
-		shortenedUrl.innerText = text;
+		shortenedUrl.appendChild(document.createTextNode(`https://${text}`));
 	});
+}
+
+function copyToClipboard() {
+	const shortenedUrl = document.querySelector(
+		".shortened-url-field",
+	) as HTMLElement;
+	if (!shortenedUrl) {
+		console.error("Could not find shortened-url element");
+		return;
+	}
+	const url = shortenedUrl.textContent;
+	if (!url) {
+		console.error("Could not find url in shortened-url element");
+		return;
+	}
+	navigator.clipboard.writeText(url);
 }

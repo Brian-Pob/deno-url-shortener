@@ -41,7 +41,7 @@ router.get(
 	route((req, ctx) => {
 		// Assume :url is an encoded url
 		const decodedUrl = decodeURIComponent(ctx.params.url);
-		const id = nanoid();
+		const id = nanoid(8);
 		kv.set([id], decodedUrl);
 
 		console.log(`Shortening ${decodedUrl} to ${BASE_URL}/${id}`);

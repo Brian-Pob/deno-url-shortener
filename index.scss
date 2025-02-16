@@ -3,6 +3,9 @@
   justify-items: center;
 }
 
+.shortened-url {
+  position: relative;
+}
 .shortened-url-field {
   display: inline-block;
   height: calc(
@@ -15,7 +18,7 @@
     var(--pico-form-element-spacing-horizontal);
   font-size: large;
   margin-bottom: var(--pico-spacing);
-  position: relative;
+  overflow-x: auto;
 }
 
 .copy-button {
