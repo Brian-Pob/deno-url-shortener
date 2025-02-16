@@ -19,6 +19,7 @@ A simple URL shortener built with Deno, Hono, Vite, and Pico CSS.
 - [Hono](https://hono.dev/) - A lightweight web framework for Deno.
 - [Vite](https://vitejs.dev/) - A fast build tool and development server.
 - [Pico CSS](https://picocss.com/) - A minimalist CSS framework for semantic HTML.
+- [nanoid](https://github.com/ai/nanoid) - A tiny, secure, URL-friendly unique string ID generator.
 
 ## My Setup
 
